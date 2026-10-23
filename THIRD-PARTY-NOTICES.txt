@@ -1,0 +1,19 @@
+Luna's Modloader original code is licensed under MIT; see LICENSE.txt.
+
+The shipped Windows executable bundles CPython 3.12 and Tcl/Tk from the
+redistributable runtime in the user-supplied ArmorWorkbench 0.10.1 archive.
+It also uses that distribution's PyInstaller 6.20.0 Windows x64 bootloader,
+bootstrap modules and runtime hooks. PyInstaller's bootloader exception
+permits distribution of applications built with it under another license.
+License texts are in LICENSES and embedded in the executable.
+
+ArmorWorkbench application Python modules, game-editing implementation,
+assets, native solver and third-party Python packages are excluded. The
+runtime extraction/build report records excluded Python module names.
+This does not modify or redistribute ArmorWorkbench as a configuration tool;
+import the original separate mod ZIP when you want to use that tool.
+
+Windows runtime DLLs and Python extension modules retain their original
+licensing. No game executable, game DLL, decrypted game tables or user
+configuration is embedded in this new application. Real game inputs are
+copied locally only after the user selects their installation.
