@@ -15,7 +15,7 @@ Your library, imported archives, staged files, saved configurations and backups 
 
 ## Configurator compatibility
 
-EXE installers must support writing to the selected staged directory. Some existing tools reject already modified input or demand their own original backup. Their author must add a compatible loader/export mode; Luna cannot automatically disable checks inside an EXE. Give authors **README_DEVELOPERS.md**, which documents the exact packaging and output requirements.
+EXE installers must support writing to the selected staged directory. Some existing tools reject already modified input or demand their own original backup. Their author must add a compatible loader/export mode; Luna cannot automatically disable checks inside an EXE.
 
 The dummy is a partial working copy, not a running game or full installation. Saved complete-file outputs use the visible order; later complete replacements override earlier ones. Composition requires a configurator that preserves the earlier input changes. Unknown boot/script installers may need an integration.
 
