@@ -1,0 +1,660 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ("Small manifest thumbnails using Tk or Windows' built-in GDI+ image codecs.")
+              4 STORE_NAME               0 (__doc__)
+
+  2           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (ctypes)
+             12 STORE_NAME               1 (ctypes)
+
+  3          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               2 (None)
+             18 IMPORT_NAME              2 (os)
+             20 STORE_NAME               2 (os)
+
+  4          22 LOAD_CONST               1 (0)
+             24 LOAD_CONST               2 (None)
+             26 IMPORT_NAME              3 (tkinter)
+             28 STORE_NAME               4 (tk)
+
+  7          30 LOAD_CONST               7 ((24,))
+             32 LOAD_CONST               3 (<code object fit_size at 0x7f51aa7428d0, file "mod_images.py", line 7>)
+             34 MAKE_FUNCTION            1 (defaults)
+             36 STORE_NAME               5 (fit_size)
+
+ 13          38 LOAD_CONST               8 (((24, 53, 66),))
+             40 LOAD_CONST               4 (<code object rgb_pixel at 0x7f51aa72df70, file "mod_images.py", line 13>)
+             42 MAKE_FUNCTION            1 (defaults)
+             44 STORE_NAME               6 (rgb_pixel)
+
+ 19          46 LOAD_CONST               7 ((24,))
+             48 LOAD_CONST               5 (<code object windows_ppm at 0x26d6cab0, file "mod_images.py", line 19>)
+             50 MAKE_FUNCTION            1 (defaults)
+             52 STORE_NAME               7 (windows_ppm)
+
+ 53          54 LOAD_CONST               7 ((24,))
+             56 LOAD_CONST               6 (<code object thumbnail at 0x26d6c230, file "mod_images.py", line 53>)
+             58 MAKE_FUNCTION            1 (defaults)
+             60 STORE_NAME               8 (thumbnail)
+             62 RETURN_CONST             2 (None)
+
+Disassembly of <code object fit_size at 0x7f51aa7428d0, file "mod_images.py", line 7>:
+  7           0 RESUME                   0
+
+  8           2 LOAD_FAST                0 (width)
+              4 LOAD_CONST               1 (0)
+              6 COMPARE_OP              26 (<=)
+             10 POP_JUMP_IF_TRUE        13 (to 38)
+             12 LOAD_FAST                1 (height)
+             14 LOAD_CONST               1 (0)
+             16 COMPARE_OP              26 (<=)
+             20 POP_JUMP_IF_TRUE         8 (to 38)
+             22 LOAD_FAST                0 (width)
+             24 LOAD_FAST                1 (height)
+             26 BINARY_OP                5 (*)
+             30 LOAD_CONST               2 (32000000)
+             32 COMPARE_OP              68 (>)
+             36 POP_JUMP_IF_FALSE       11 (to 60)
+        >>   38 LOAD_GLOBAL              1 (NULL + ValueError)
+             48 LOAD_CONST               3 ('Image dimensions exceed preview limit')
+             50 CALL                     1
+             58 RAISE_VARARGS            1
+
+  9     >>   60 LOAD_GLOBAL              3 (NULL + min)
+             70 LOAD_FAST                2 (box)
+             72 LOAD_FAST                0 (width)
+             74 BINARY_OP               11 (/)
+             78 LOAD_FAST                2 (box)
+             80 LOAD_FAST                1 (height)
+             82 BINARY_OP               11 (/)
+             86 LOAD_CONST               4 (1)
+             88 CALL                     3
+             96 STORE_FAST               3 (scale)
+
+ 10          98 LOAD_GLOBAL              5 (NULL + max)
+            108 LOAD_CONST               4 (1)
+            110 LOAD_GLOBAL              7 (NULL + round)
+            120 LOAD_FAST                0 (width)
+            122 LOAD_FAST                3 (scale)
+            124 BINARY_OP                5 (*)
+            128 CALL                     1
+            136 CALL                     2
+            144 LOAD_GLOBAL              5 (NULL + max)
+            154 LOAD_CONST               4 (1)
+            156 LOAD_GLOBAL              7 (NULL + round)
+            166 LOAD_FAST                1 (height)
+            168 LOAD_FAST                3 (scale)
+            170 BINARY_OP                5 (*)
+            174 CALL                     1
+            182 CALL                     2
+            190 BUILD_TUPLE              2
+            192 RETURN_VALUE
+
+Disassembly of <code object rgb_pixel at 0x7f51aa72df70, file "mod_images.py", line 13>:
+              0 MAKE_CELL                3 (alpha)
+
+ 13           2 RESUME                   0
+
+ 14           4 LOAD_FAST                0 (argb)
+              6 LOAD_CONST               1 (24)
+              8 BINARY_OP                9 (>>)
+             12 LOAD_CONST               2 (255)
+             14 BINARY_OP                1 (&)
+             18 STORE_DEREF              3 (alpha)
+
+ 15          20 LOAD_FAST                0 (argb)
+             22 LOAD_CONST               3 (16)
+             24 BINARY_OP                9 (>>)
+             28 LOAD_CONST               2 (255)
+             30 BINARY_OP                1 (&)
+             34 LOAD_FAST                0 (argb)
+             36 LOAD_CONST               4 (8)
+             38 BINARY_OP                9 (>>)
+             42 LOAD_CONST               2 (255)
+             44 BINARY_OP                1 (&)
+             48 LOAD_FAST                0 (argb)
+             50 LOAD_CONST               2 (255)
+             52 BINARY_OP                1 (&)
+             56 BUILD_TUPLE              3
+             58 STORE_FAST               2 (color)
+
+ 16          60 LOAD_GLOBAL              1 (NULL + bytes)
+             70 LOAD_CLOSURE             3 (alpha)
+             72 BUILD_TUPLE              1
+             74 LOAD_CONST               5 (<code object <genexpr> at 0x7f51aa788f10, file "mod_images.py", line 16>)
+             76 MAKE_FUNCTION            8 (closure)
+             78 LOAD_GLOBAL              3 (NULL + zip)
+             88 LOAD_FAST                2 (color)
+             90 LOAD_FAST                1 (background)
+             92 CALL                     2
+            100 GET_ITER
+            102 CALL                     0
+            110 CALL                     1
+            118 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x7f51aa788f10, file "mod_images.py", line 16>:
+              0 COPY_FREE_VARS           1
+
+ 16           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                27 (to 68)
+             14 UNPACK_SEQUENCE          2
+             18 STORE_FAST               1 (v)
+             20 STORE_FAST               2 (b)
+             22 LOAD_FAST                1 (v)
+             24 LOAD_DEREF               3 (alpha)
+             26 BINARY_OP                5 (*)
+             30 LOAD_FAST                2 (b)
+             32 LOAD_CONST               0 (255)
+             34 LOAD_DEREF               3 (alpha)
+             36 BINARY_OP               10 (-)
+             40 BINARY_OP                5 (*)
+             44 BINARY_OP                0 (+)
+             48 LOAD_CONST               1 (127)
+             50 BINARY_OP                0 (+)
+             54 LOAD_CONST               0 (255)
+             56 BINARY_OP                2 (//)
+             60 YIELD_VALUE              1
+             62 RESUME                   1
+             64 POP_TOP
+             66 JUMP_BACKWARD           29 (to 10)
+        >>   68 END_FOR
+             70 RETURN_CONST             2 (None)
+        >>   72 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             74 RERAISE                  1
+ExceptionTable:
+  6 to 70 -> 72 [0] lasti
+
+Disassembly of <code object windows_ppm at 0x26d6cab0, file "mod_images.py", line 19>:
+              0 MAKE_CELL               16 (pointer)
+              2 MAKE_CELL               17 (uint)
+
+ 19           4 RESUME                   0
+
+ 20           6 LOAD_GLOBAL              1 (NULL + ctypes)
+             16 LOAD_ATTR                2 (WinDLL)
+             36 LOAD_CONST               1 ('gdiplus')
+             38 LOAD_CONST               2 (True)
+             40 KW_NAMES                 3 (('use_last_error',))
+             42 CALL                     2
+             50 STORE_FAST               2 (lib)
+
+ 21          52 LOAD_GLOBAL              0 (ctypes)
+             62 LOAD_ATTR                4 (c_void_p)
+             82 STORE_DEREF             16 (pointer)
+             84 LOAD_GLOBAL              0 (ctypes)
+             94 LOAD_ATTR                6 (c_uint32)
+            114 STORE_DEREF             17 (uint)
+
+ 22         116 PUSH_NULL
+            118 LOAD_BUILD_CLASS
+            120 LOAD_CLOSURE            16 (pointer)
+            122 LOAD_CLOSURE            17 (uint)
+            124 BUILD_TUPLE              2
+            126 LOAD_CONST               4 (<code object Startup at 0x7f51aa76cff0, file "mod_images.py", line 22>)
+            128 MAKE_FUNCTION            8 (closure)
+            130 LOAD_CONST               5 ('Startup')
+            132 LOAD_GLOBAL              0 (ctypes)
+            142 LOAD_ATTR                8 (Structure)
+            162 CALL                     3
+            170 STORE_FAST               3 (Startup)
+
+ 24         172 LOAD_GLOBAL              1 (NULL + ctypes)
+            182 LOAD_ATTR               10 (POINTER)
+            202 LOAD_GLOBAL              0 (ctypes)
+            212 LOAD_ATTR               12 (c_size_t)
+            232 CALL                     1
+            240 LOAD_GLOBAL              1 (NULL + ctypes)
+            250 LOAD_ATTR               10 (POINTER)
+            270 LOAD_FAST                3 (Startup)
+            272 CALL                     1
+            280 LOAD_DEREF              16 (pointer)
+            282 BUILD_LIST               3
+            284 LOAD_FAST                2 (lib)
+            286 LOAD_ATTR               14 (GdiplusStartup)
+            306 STORE_ATTR               8 (argtypes)
+
+ 25         316 LOAD_GLOBAL              0 (ctypes)
+            326 LOAD_ATTR               12 (c_size_t)
+            346 BUILD_LIST               1
+            348 LOAD_FAST                2 (lib)
+            350 LOAD_ATTR               18 (GdiplusShutdown)
+            370 STORE_ATTR               8 (argtypes)
+            380 LOAD_CONST               0 (None)
+            382 LOAD_FAST                2 (lib)
+            384 LOAD_ATTR               18 (GdiplusShutdown)
+            404 STORE_ATTR              10 (restype)
+
+ 26         414 LOAD_GLOBAL              0 (ctypes)
+            424 LOAD_ATTR               22 (c_wchar_p)
+            444 LOAD_GLOBAL              1 (NULL + ctypes)
+            454 LOAD_ATTR               10 (POINTER)
+            474 LOAD_DEREF              16 (pointer)
+            476 CALL                     1
+            484 BUILD_LIST               2
+            486 LOAD_FAST                2 (lib)
+            488 LOAD_ATTR               24 (GdipLoadImageFromFile)
+            508 STORE_ATTR               8 (argtypes)
+
+ 27         518 LOAD_DEREF              16 (pointer)
+            520 LOAD_GLOBAL              1 (NULL + ctypes)
+            530 LOAD_ATTR               10 (POINTER)
+            550 LOAD_DEREF              17 (uint)
+            552 CALL                     1
+            560 BUILD_LIST               2
+            562 LOAD_FAST                2 (lib)
+            564 LOAD_ATTR               26 (GdipGetImageWidth)
+            584 STORE_ATTR               8 (argtypes)
+
+ 28         594 LOAD_DEREF              16 (pointer)
+            596 LOAD_GLOBAL              1 (NULL + ctypes)
+            606 LOAD_ATTR               10 (POINTER)
+            626 LOAD_DEREF              17 (uint)
+            628 CALL                     1
+            636 BUILD_LIST               2
+            638 LOAD_FAST                2 (lib)
+            640 LOAD_ATTR               28 (GdipGetImageHeight)
+            660 STORE_ATTR               8 (argtypes)
+
+ 29         670 LOAD_DEREF              16 (pointer)
+            672 LOAD_DEREF              17 (uint)
+            674 LOAD_DEREF              17 (uint)
+            676 LOAD_GLOBAL              1 (NULL + ctypes)
+            686 LOAD_ATTR               10 (POINTER)
+            706 LOAD_DEREF              16 (pointer)
+            708 CALL                     1
+            716 LOAD_DEREF              16 (pointer)
+            718 LOAD_DEREF              16 (pointer)
+            720 BUILD_LIST               6
+            722 LOAD_FAST                2 (lib)
+            724 LOAD_ATTR               30 (GdipGetImageThumbnail)
+            744 STORE_ATTR               8 (argtypes)
+
+ 30         754 LOAD_DEREF              16 (pointer)
+            756 LOAD_GLOBAL              0 (ctypes)
+            766 LOAD_ATTR               32 (c_int32)
+            786 LOAD_GLOBAL              0 (ctypes)
+            796 LOAD_ATTR               32 (c_int32)
+            816 LOAD_GLOBAL              1 (NULL + ctypes)
+            826 LOAD_ATTR               10 (POINTER)
+            846 LOAD_DEREF              17 (uint)
+            848 CALL                     1
+            856 BUILD_LIST               4
+            858 LOAD_FAST                2 (lib)
+            860 LOAD_ATTR               34 (GdipBitmapGetPixel)
+            880 STORE_ATTR               8 (argtypes)
+
+ 31         890 LOAD_DEREF              16 (pointer)
+            892 BUILD_LIST               1
+            894 LOAD_FAST                2 (lib)
+            896 LOAD_ATTR               36 (GdipDisposeImage)
+            916 STORE_ATTR               8 (argtypes)
+
+ 32         926 LOAD_GLOBAL              1 (NULL + ctypes)
+            936 LOAD_ATTR               12 (c_size_t)
+            956 CALL                     0
+            964 STORE_FAST               4 (token)
+            966 PUSH_NULL
+            968 LOAD_DEREF              16 (pointer)
+            970 CALL                     0
+            978 STORE_FAST               5 (image)
+            980 PUSH_NULL
+            982 LOAD_DEREF              16 (pointer)
+            984 CALL                     0
+            992 STORE_FAST               6 (thumb)
+
+ 33         994 LOAD_CONST               6 (<code object check at 0x7f51aa7bdd10, file "mod_images.py", line 33>)
+            996 MAKE_FUNCTION            0
+            998 STORE_FAST               7 (check)
+
+ 35        1000 PUSH_NULL
+           1002 LOAD_FAST                7 (check)
+           1004 LOAD_FAST                2 (lib)
+           1006 LOAD_ATTR               15 (NULL|self + GdiplusStartup)
+           1026 LOAD_GLOBAL              1 (NULL + ctypes)
+           1036 LOAD_ATTR               38 (byref)
+           1056 LOAD_FAST                4 (token)
+           1058 CALL                     1
+           1066 LOAD_GLOBAL              1 (NULL + ctypes)
+           1076 LOAD_ATTR               38 (byref)
+           1096 PUSH_NULL
+           1098 LOAD_FAST                3 (Startup)
+           1100 LOAD_CONST               7 (1)
+           1102 LOAD_CONST               0 (None)
+           1104 LOAD_CONST               8 (0)
+           1106 LOAD_CONST               7 (1)
+           1108 CALL                     4
+           1116 CALL                     1
+           1124 LOAD_CONST               0 (None)
+           1126 CALL                     3
+           1134 CALL                     1
+           1142 POP_TOP
+
+ 36        1144 NOP
+
+ 37        1146 PUSH_NULL
+           1148 LOAD_FAST                7 (check)
+           1150 LOAD_FAST                2 (lib)
+           1152 LOAD_ATTR               25 (NULL|self + GdipLoadImageFromFile)
+           1172 LOAD_GLOBAL             41 (NULL + str)
+           1182 LOAD_FAST                0 (path)
+           1184 CALL                     1
+           1192 LOAD_GLOBAL              1 (NULL + ctypes)
+           1202 LOAD_ATTR               38 (byref)
+           1222 LOAD_FAST                5 (image)
+           1224 CALL                     1
+           1232 CALL                     2
+           1240 CALL                     1
+           1248 POP_TOP
+
+ 38        1250 PUSH_NULL
+           1252 LOAD_DEREF              17 (uint)
+           1254 CALL                     0
+           1262 PUSH_NULL
+           1264 LOAD_DEREF              17 (uint)
+           1266 CALL                     0
+           1274 STORE_FAST               9 (h)
+           1276 STORE_FAST               8 (w)
+           1278 PUSH_NULL
+           1280 LOAD_FAST                7 (check)
+           1282 LOAD_FAST                2 (lib)
+           1284 LOAD_ATTR               27 (NULL|self + GdipGetImageWidth)
+           1304 LOAD_FAST                5 (image)
+           1306 LOAD_GLOBAL              1 (NULL + ctypes)
+           1316 LOAD_ATTR               38 (byref)
+           1336 LOAD_FAST                8 (w)
+           1338 CALL                     1
+           1346 CALL                     2
+           1354 CALL                     1
+           1362 POP_TOP
+           1364 PUSH_NULL
+           1366 LOAD_FAST                7 (check)
+           1368 LOAD_FAST                2 (lib)
+           1370 LOAD_ATTR               29 (NULL|self + GdipGetImageHeight)
+           1390 LOAD_FAST                5 (image)
+           1392 LOAD_GLOBAL              1 (NULL + ctypes)
+           1402 LOAD_ATTR               38 (byref)
+           1422 LOAD_FAST                9 (h)
+           1424 CALL                     1
+           1432 CALL                     2
+           1440 CALL                     1
+           1448 POP_TOP
+
+ 39        1450 LOAD_GLOBAL             43 (NULL + fit_size)
+           1460 LOAD_FAST                8 (w)
+           1462 LOAD_ATTR               44 (value)
+           1482 LOAD_FAST                9 (h)
+           1484 LOAD_ATTR               44 (value)
+           1504 LOAD_FAST                1 (box)
+           1506 CALL                     3
+           1514 UNPACK_SEQUENCE          2
+           1518 STORE_FAST              10 (width)
+           1520 STORE_FAST              11 (height)
+
+ 40        1522 PUSH_NULL
+           1524 LOAD_FAST                7 (check)
+           1526 LOAD_FAST                2 (lib)
+           1528 LOAD_ATTR               31 (NULL|self + GdipGetImageThumbnail)
+           1548 LOAD_FAST                5 (image)
+           1550 LOAD_FAST               10 (width)
+           1552 LOAD_FAST               11 (height)
+           1554 LOAD_GLOBAL              1 (NULL + ctypes)
+           1564 LOAD_ATTR               38 (byref)
+           1584 LOAD_FAST                6 (thumb)
+           1586 CALL                     1
+           1594 LOAD_CONST               0 (None)
+           1596 LOAD_CONST               0 (None)
+           1598 CALL                     6
+           1606 CALL                     1
+           1614 POP_TOP
+
+ 41        1616 LOAD_GLOBAL             47 (NULL + bytearray)
+           1626 CALL                     0
+           1634 STORE_FAST              12 (pixels)
+           1636 PUSH_NULL
+           1638 LOAD_DEREF              17 (uint)
+           1640 CALL                     0
+           1648 STORE_FAST              13 (argb)
+
+ 42        1650 LOAD_GLOBAL             49 (NULL + range)
+           1660 LOAD_FAST               11 (height)
+           1662 CALL                     1
+           1670 GET_ITER
+        >> 1672 FOR_ITER                99 (to 1874)
+           1676 STORE_FAST              14 (y)
+
+ 43        1678 LOAD_GLOBAL             49 (NULL + range)
+           1688 LOAD_FAST               10 (width)
+           1690 CALL                     1
+           1698 GET_ITER
+        >> 1700 FOR_ITER                83 (to 1870)
+           1704 STORE_FAST              15 (x)
+
+ 44        1706 PUSH_NULL
+           1708 LOAD_FAST                7 (check)
+           1710 LOAD_FAST                2 (lib)
+           1712 LOAD_ATTR               35 (NULL|self + GdipBitmapGetPixel)
+           1732 LOAD_FAST                6 (thumb)
+           1734 LOAD_FAST               15 (x)
+           1736 LOAD_FAST               14 (y)
+           1738 LOAD_GLOBAL              1 (NULL + ctypes)
+           1748 LOAD_ATTR               38 (byref)
+           1768 LOAD_FAST               13 (argb)
+           1770 CALL                     1
+           1778 CALL                     4
+           1786 CALL                     1
+           1794 POP_TOP
+
+ 45        1796 LOAD_FAST               12 (pixels)
+           1798 LOAD_ATTR               51 (NULL|self + extend)
+           1818 LOAD_GLOBAL             53 (NULL + rgb_pixel)
+           1828 LOAD_FAST               13 (argb)
+           1830 LOAD_ATTR               44 (value)
+           1850 CALL                     1
+           1858 CALL                     1
+           1866 POP_TOP
+           1868 JUMP_BACKWARD           85 (to 1700)
+
+ 43     >> 1870 END_FOR
+           1872 JUMP_BACKWARD          101 (to 1672)
+
+ 42     >> 1874 END_FOR
+
+ 46        1876 LOAD_CONST               9 ('P6\n')
+           1878 LOAD_FAST               10 (width)
+           1880 FORMAT_VALUE             0
+           1882 LOAD_CONST              10 (' ')
+           1884 LOAD_FAST               11 (height)
+           1886 FORMAT_VALUE             0
+           1888 LOAD_CONST              11 ('\n255\n')
+           1890 BUILD_STRING             5
+           1892 LOAD_ATTR               55 (NULL|self + encode)
+           1912 CALL                     0
+           1920 LOAD_FAST               12 (pixels)
+           1922 BINARY_OP                0 (+)
+
+ 48        1926 LOAD_FAST                6 (thumb)
+           1928 LOAD_ATTR               44 (value)
+           1948 POP_JUMP_IF_FALSE       17 (to 1984)
+           1950 LOAD_FAST                2 (lib)
+           1952 LOAD_ATTR               37 (NULL|self + GdipDisposeImage)
+           1972 LOAD_FAST                6 (thumb)
+           1974 CALL                     1
+           1982 POP_TOP
+
+ 49     >> 1984 LOAD_FAST                5 (image)
+           1986 LOAD_ATTR               44 (value)
+           2006 POP_JUMP_IF_FALSE       17 (to 2042)
+           2008 LOAD_FAST                2 (lib)
+           2010 LOAD_ATTR               37 (NULL|self + GdipDisposeImage)
+           2030 LOAD_FAST                5 (image)
+           2032 CALL                     1
+           2040 POP_TOP
+
+ 50     >> 2042 LOAD_FAST                2 (lib)
+           2044 LOAD_ATTR               19 (NULL|self + GdiplusShutdown)
+           2064 LOAD_FAST                4 (token)
+           2066 CALL                     1
+           2074 POP_TOP
+           2076 RETURN_VALUE
+        >> 2078 PUSH_EXC_INFO
+
+ 48        2080 LOAD_FAST                6 (thumb)
+           2082 LOAD_ATTR               44 (value)
+           2102 POP_JUMP_IF_FALSE       17 (to 2138)
+           2104 LOAD_FAST                2 (lib)
+           2106 LOAD_ATTR               37 (NULL|self + GdipDisposeImage)
+           2126 LOAD_FAST                6 (thumb)
+           2128 CALL                     1
+           2136 POP_TOP
+
+ 49     >> 2138 LOAD_FAST                5 (image)
+           2140 LOAD_ATTR               44 (value)
+           2160 POP_JUMP_IF_FALSE       17 (to 2196)
+           2162 LOAD_FAST                2 (lib)
+           2164 LOAD_ATTR               37 (NULL|self + GdipDisposeImage)
+           2184 LOAD_FAST                5 (image)
+           2186 CALL                     1
+           2194 POP_TOP
+
+ 50     >> 2196 LOAD_FAST                2 (lib)
+           2198 LOAD_ATTR               19 (NULL|self + GdiplusShutdown)
+           2218 LOAD_FAST                4 (token)
+           2220 CALL                     1
+           2228 POP_TOP
+           2230 RERAISE                  0
+        >> 2232 COPY                     3
+           2234 POP_EXCEPT
+           2236 RERAISE                  1
+ExceptionTable:
+  1146 to 1924 -> 2078 [0]
+  2078 to 2230 -> 2232 [1] lasti
+
+Disassembly of <code object Startup at 0x7f51aa76cff0, file "mod_images.py", line 22>:
+              0 COPY_FREE_VARS           2
+
+ 22           2 RESUME                   0
+              4 LOAD_NAME                0 (__name__)
+              6 STORE_NAME               1 (__module__)
+              8 LOAD_CONST               0 ('windows_ppm.<locals>.Startup')
+             10 STORE_NAME               2 (__qualname__)
+
+ 23          12 LOAD_CONST               1 ('version')
+             14 LOAD_LOCALS
+             16 LOAD_FROM_DICT_OR_DEREF     1 (uint)
+             18 BUILD_TUPLE              2
+             20 LOAD_CONST               2 ('callback')
+             22 LOAD_LOCALS
+             24 LOAD_FROM_DICT_OR_DEREF     0 (pointer)
+             26 BUILD_TUPLE              2
+             28 LOAD_CONST               3 ('background')
+             30 LOAD_NAME                3 (ctypes)
+             32 LOAD_ATTR                8 (c_int32)
+             52 BUILD_TUPLE              2
+             54 LOAD_CONST               4 ('external')
+             56 LOAD_NAME                3 (ctypes)
+             58 LOAD_ATTR                8 (c_int32)
+             78 BUILD_TUPLE              2
+             80 BUILD_LIST               4
+             82 STORE_NAME               5 (_fields_)
+             84 RETURN_CONST             5 (None)
+
+Disassembly of <code object check at 0x7f51aa7bdd10, file "mod_images.py", line 33>:
+ 33           0 RESUME                   0
+
+ 34           2 LOAD_FAST                0 (code)
+              4 POP_JUMP_IF_FALSE       11 (to 28)
+              6 LOAD_GLOBAL              1 (NULL + ValueError)
+             16 LOAD_CONST               1 ('Windows could not decode this mod image')
+             18 CALL                     1
+             26 RAISE_VARARGS            1
+        >>   28 RETURN_CONST             0 (None)
+
+Disassembly of <code object thumbnail at 0x26d6c230, file "mod_images.py", line 53>:
+ 53           0 RESUME                   0
+
+ 54           2 LOAD_GLOBAL              0 (os)
+             12 LOAD_ATTR                2 (name)
+             32 LOAD_CONST               1 ('nt')
+             34 COMPARE_OP              40 (==)
+             38 POP_JUMP_IF_FALSE       34 (to 108)
+
+ 55          40 LOAD_GLOBAL              5 (NULL + tk)
+             50 LOAD_ATTR                6 (PhotoImage)
+             70 LOAD_FAST                0 (master)
+             72 LOAD_GLOBAL              9 (NULL + windows_ppm)
+             82 LOAD_FAST                1 (path)
+             84 LOAD_FAST                2 (box)
+             86 CALL                     2
+             94 LOAD_CONST               2 ('PPM')
+             96 KW_NAMES                 3 (('master', 'data', 'format'))
+             98 CALL                     3
+            106 RETURN_VALUE
+
+ 58     >>  108 LOAD_GLOBAL              5 (NULL + tk)
+            118 LOAD_ATTR                6 (PhotoImage)
+            138 LOAD_FAST                0 (master)
+            140 LOAD_GLOBAL             15 (NULL + str)
+            150 LOAD_FAST                1 (path)
+            152 CALL                     1
+            160 KW_NAMES                 4 (('master', 'file'))
+            162 CALL                     2
+            170 STORE_FAST               3 (image)
+
+ 59         172 LOAD_GLOBAL             17 (NULL + fit_size)
+            182 LOAD_FAST                3 (image)
+            184 LOAD_ATTR               19 (NULL|self + width)
+            204 CALL                     0
+            212 LOAD_FAST                3 (image)
+            214 LOAD_ATTR               21 (NULL|self + height)
+            234 CALL                     0
+            242 LOAD_FAST                2 (box)
+            244 CALL                     3
+            252 POP_TOP
+
+ 60         254 LOAD_GLOBAL             23 (NULL + max)
+            264 LOAD_CONST               5 (1)
+            266 LOAD_GLOBAL             23 (NULL + max)
+            276 LOAD_FAST                3 (image)
+            278 LOAD_ATTR               19 (NULL|self + width)
+            298 CALL                     0
+            306 LOAD_FAST                3 (image)
+            308 LOAD_ATTR               21 (NULL|self + height)
+            328 CALL                     0
+            336 CALL                     2
+            344 LOAD_FAST                2 (box)
+            346 BINARY_OP                0 (+)
+            350 LOAD_CONST               5 (1)
+            352 BINARY_OP               10 (-)
+            356 LOAD_FAST                2 (box)
+            358 BINARY_OP                2 (//)
+            362 CALL                     2
+            370 STORE_FAST               4 (scale)
+
+ 61         372 LOAD_FAST                3 (image)
+            374 LOAD_ATTR               25 (NULL|self + subsample)
+            394 LOAD_FAST                4 (scale)
+            396 LOAD_FAST                4 (scale)
+            398 CALL                     2
+            406 RETURN_VALUE
+        >>  408 PUSH_EXC_INFO
+
+ 56         410 LOAD_GLOBAL             10 (ValueError)
+            420 LOAD_GLOBAL             12 (OSError)
+            430 BUILD_TUPLE              2
+            432 CHECK_EXC_MATCH
+            434 POP_JUMP_IF_FALSE        3 (to 442)
+            436 POP_TOP
+            438 POP_EXCEPT
+            440 JUMP_BACKWARD          167 (to 108)
+        >>  442 RERAISE                  0
+        >>  444 COPY                     3
+            446 POP_EXCEPT
+            448 RERAISE                  1
+ExceptionTable:
+  40 to 104 -> 408 [0]
+  408 to 436 -> 444 [1] lasti
+  442 to 442 -> 444 [1] lasti

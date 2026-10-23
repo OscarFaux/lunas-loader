@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "ArmorWorkbench-0.10.1-Standalone.zip": {
+      "bytes": 12558102,
+      "sha256": "dc77df6478a15fe6b258ee1d656d84d18e5c723eb1f40a4ecfb1630042c22658"
+    },
+    "Lunas-Modloader-0.5.1.exe": {
+      "bytes": 11891328,
+      "sha256": "1f938544c8b4e4e0e7ade2bd347d7d6a67418c47bf0f4b786c4889132d9c2ae3"
+    }
+  },
+  "build_source": "tools/build_standalone.py",
+  "runtime_input_included": false,
+  "prebuilt_exe_included": false,
+  "independent_windows_build": "tools/Build-Windows.ps1"
+}

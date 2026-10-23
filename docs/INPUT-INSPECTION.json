@@ -1,0 +1,46 @@
+[
+  {
+    "archive": "ArmorWorkbench-0.10.1-Standalone.zip",
+    "options": 0,
+    "icon": null,
+    "executable": "ArmorWorkbench/ArmorWorkbench.exe",
+    "targets": []
+  },
+  {
+    "archive": "Jump-Pack-Recharge-v1.2.zip",
+    "options": 2,
+    "icon": null,
+    "executable": null,
+    "targets": [
+      "data/game/generated_entities.dl_bin"
+    ]
+  },
+  {
+    "archive": "nofomo.zip",
+    "options": 0,
+    "icon": null,
+    "executable": "NoMoFOMO + Hidden Content Unlocker Mod/NoMoFOMO + Hidden Content Unlocker Mod.exe",
+    "targets": [
+      "data/game/generated_customization_armor_sets.dl_bin"
+    ]
+  },
+  {
+    "archive": "stayput.zip",
+    "options": 2,
+    "icon": null,
+    "executable": null,
+    "targets": [
+      "data/game/generated_stratagem_settings.dl_bin"
+    ],
+    "install_unchecked_payloads": 0
+  },
+  {
+    "archive": "扫荡者发射突破机甲霰弹1.1.zip",
+    "options": 1,
+    "icon": null,
+    "executable": null,
+    "targets": [
+      "data/game/generated_projectile_settings.dl_bin"
+    ]
+  }
+]

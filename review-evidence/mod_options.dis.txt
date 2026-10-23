@@ -1,0 +1,1088 @@
+  0           0 RESUME                   0
+
+  1           2 LOAD_CONST               0 ('Data-only HD2 manifest v1 options: checkboxes and single-choice sub-options.')
+              4 STORE_NAME               0 (__doc__)
+
+  2           6 LOAD_CONST               1 (0)
+              8 LOAD_CONST               2 (None)
+             10 IMPORT_NAME              1 (json)
+             12 STORE_NAME               1 (json)
+
+  3          14 LOAD_CONST               1 (0)
+             16 LOAD_CONST               3 (('PurePosixPath',))
+             18 IMPORT_NAME              2 (pathlib)
+             20 IMPORT_FROM              3 (PurePosixPath)
+             22 STORE_NAME               3 (PurePosixPath)
+             24 POP_TOP
+
+  4          26 LOAD_CONST               1 (0)
+             28 LOAD_CONST               2 (None)
+             30 IMPORT_NAME              4 (manager)
+             32 STORE_NAME               5 (m)
+
+  7          34 LOAD_CONST               4 (<code object model at 0x26e96470, file "mod_options.py", line 7>)
+             36 MAKE_FUNCTION            0
+             38 STORE_NAME               6 (model)
+
+ 60          40 LOAD_CONST               5 (<code object defaults at 0x7f51aa76d350, file "mod_options.py", line 60>)
+             42 MAKE_FUNCTION            0
+             44 STORE_NAME               7 (defaults)
+
+ 64          46 LOAD_CONST               6 (<code object validate at 0x26e17e00, file "mod_options.py", line 64>)
+             48 MAKE_FUNCTION            0
+             50 STORE_NAME               8 (validate)
+
+ 74          52 LOAD_CONST               7 (<code object selected_files at 0x26e18590, file "mod_options.py", line 74>)
+             54 MAKE_FUNCTION            0
+             56 STORE_NAME               9 (selected_files)
+             58 RETURN_CONST             2 (None)
+
+Disassembly of <code object model at 0x26e96470, file "mod_options.py", line 7>:
+              0 MAKE_CELL                0 (files)
+              2 MAKE_CELL               16 (manifest)
+
+  7           4 RESUME                   0
+
+  8           6 LOAD_GLOBAL              1 (NULL + sorted)
+             16 LOAD_CLOSURE             0 (files)
+             18 BUILD_TUPLE              1
+             20 LOAD_CONST               1 (<code object <genexpr> at 0x7f51aa72dcf0, file "mod_options.py", line 8>)
+             22 MAKE_FUNCTION            8 (closure)
+             24 LOAD_DEREF               0 (files)
+             26 LOAD_ATTR                3 (NULL|self + rglob)
+             46 LOAD_CONST               2 ('manifest.json')
+             48 CALL                     1
+             56 GET_ITER
+             58 CALL                     0
+
+  9          66 LOAD_CLOSURE             0 (files)
+             68 BUILD_TUPLE              1
+             70 LOAD_CONST               3 (<code object <lambda> at 0x7f51aa72e0b0, file "mod_options.py", line 9>)
+             72 MAKE_FUNCTION            8 (closure)
+
+  8          74 KW_NAMES                 4 (('key',))
+             76 CALL                     2
+             84 STORE_FAST               1 (candidates)
+
+ 10          86 LOAD_FAST                1 (candidates)
+             88 POP_JUMP_IF_TRUE        40 (to 170)
+
+ 11          90 LOAD_DEREF               0 (files)
+             92 LOAD_CONST               5 ('unified-mod.json')
+             94 BINARY_OP               11 (/)
+             98 STORE_FAST               2 (native)
+
+ 12         100 LOAD_FAST                2 (native)
+            102 LOAD_ATTR                5 (NULL|self + exists)
+            122 CALL                     0
+            130 POP_JUMP_IF_FALSE        4 (to 140)
+            132 LOAD_FAST                2 (native)
+            134 BUILD_LIST               1
+            136 STORE_FAST               1 (candidates)
+            138 JUMP_FORWARD            15 (to 170)
+
+ 13     >>  140 LOAD_GLOBAL              7 (NULL + dict)
+            150 LOAD_CONST               6 ('')
+            152 LOAD_CONST               6 ('')
+            154 BUILD_LIST               0
+            156 LOAD_CONST               0 (None)
+            158 KW_NAMES                 7 (('root', 'description', 'options', 'icon'))
+            160 CALL                     4
+            168 RETURN_VALUE
+
+ 14     >>  170 LOAD_FAST                1 (candidates)
+            172 LOAD_CONST               8 (0)
+            174 BINARY_SUBSCR
+            178 STORE_DEREF             16 (manifest)
+
+ 15         180 LOAD_GLOBAL              9 (NULL + m)
+            190 LOAD_ATTR               10 (need)
+            210 LOAD_DEREF              16 (manifest)
+            212 LOAD_ATTR               13 (NULL|self + stat)
+            232 CALL                     0
+            240 LOAD_ATTR               14 (st_size)
+            260 LOAD_CONST               9 (1048576)
+            262 COMPARE_OP              26 (<=)
+            266 LOAD_CONST              10 ('Mod manifest is too large')
+            268 CALL                     2
+            276 POP_TOP
+
+ 16         278 LOAD_GLOBAL             17 (NULL + json)
+            288 LOAD_ATTR               18 (loads)
+            308 LOAD_DEREF              16 (manifest)
+            310 LOAD_ATTR               21 (NULL|self + read_text)
+            330 LOAD_CONST              11 ('utf-8-sig')
+            332 CALL                     1
+            340 CALL                     1
+            348 STORE_FAST               3 (value)
+
+ 17         350 LOAD_DEREF              16 (manifest)
+            352 LOAD_ATTR               22 (name)
+            372 LOAD_CONST               5 ('unified-mod.json')
+            374 COMPARE_OP              55 (!=)
+            378 POP_JUMP_IF_FALSE       27 (to 434)
+            380 LOAD_CONST              12 ('Options')
+            382 LOAD_FAST                3 (value)
+            384 CONTAINS_OP              0
+            386 POP_JUMP_IF_TRUE        23 (to 434)
+            388 LOAD_CONST              13 ('Guid')
+            390 LOAD_FAST                3 (value)
+            392 CONTAINS_OP              0
+            394 POP_JUMP_IF_FALSE        4 (to 404)
+            396 LOAD_CONST              14 ('Name')
+            398 LOAD_FAST                3 (value)
+            400 CONTAINS_OP              0
+            402 POP_JUMP_IF_TRUE        15 (to 434)
+
+ 18     >>  404 LOAD_GLOBAL              7 (NULL + dict)
+            414 LOAD_CONST               6 ('')
+            416 LOAD_CONST               6 ('')
+            418 BUILD_LIST               0
+            420 LOAD_CONST               0 (None)
+            422 KW_NAMES                 7 (('root', 'description', 'options', 'icon'))
+            424 CALL                     4
+            432 RETURN_VALUE
+
+ 19     >>  434 LOAD_FAST                3 (value)
+            436 LOAD_ATTR               25 (NULL|self + get)
+            456 LOAD_CONST              12 ('Options')
+            458 CALL                     1
+            466 COPY                     1
+            468 POP_JUMP_IF_TRUE         2 (to 474)
+            470 POP_TOP
+            472 BUILD_LIST               0
+        >>  474 STORE_FAST               4 (options)
+
+ 20         476 LOAD_GLOBAL              9 (NULL + m)
+            486 LOAD_ATTR               10 (need)
+            506 LOAD_FAST                3 (value)
+            508 LOAD_ATTR               25 (NULL|self + get)
+            528 LOAD_CONST              15 ('Version')
+            530 LOAD_CONST              16 (1)
+            532 CALL                     2
+            540 LOAD_CONST              16 (1)
+            542 COMPARE_OP              40 (==)
+            546 LOAD_CONST              17 ('Unsupported mod-option manifest version')
+            548 CALL                     2
+            556 POP_TOP
+
+ 21         558 LOAD_GLOBAL              9 (NULL + m)
+            568 LOAD_ATTR               10 (need)
+            588 LOAD_GLOBAL             27 (NULL + isinstance)
+            598 LOAD_FAST                4 (options)
+            600 LOAD_GLOBAL             28 (list)
+            610 CALL                     2
+            618 COPY                     1
+            620 POP_JUMP_IF_FALSE       14 (to 650)
+            622 POP_TOP
+            624 LOAD_GLOBAL             31 (NULL + len)
+            634 LOAD_FAST                4 (options)
+            636 CALL                     1
+            644 LOAD_CONST              18 (1000)
+            646 COMPARE_OP              26 (<=)
+        >>  650 LOAD_CONST              19 ('Invalid Options array')
+            652 CALL                     2
+            660 POP_TOP
+
+ 22         662 LOAD_CLOSURE            16 (manifest)
+            664 BUILD_TUPLE              1
+            666 LOAD_CONST              20 (<code object includes at 0x26ebb230, file "mod_options.py", line 22>)
+            668 MAKE_FUNCTION            8 (closure)
+            670 STORE_FAST               5 (includes)
+
+ 35         672 BUILD_LIST               0
+            674 STORE_FAST               6 (definitions)
+            676 LOAD_CONST               8 (0)
+            678 STORE_FAST               7 (total)
+
+ 36         680 LOAD_GLOBAL             33 (NULL + enumerate)
+            690 LOAD_FAST                4 (options)
+            692 CALL                     1
+            700 GET_ITER
+        >>  702 EXTENDED_ARG             1
+            704 FOR_ITER               388 (to 1484)
+            708 UNPACK_SEQUENCE          2
+            712 STORE_FAST               8 (index)
+            714 STORE_FAST               9 (item)
+
+ 37         716 LOAD_GLOBAL              9 (NULL + m)
+            726 LOAD_ATTR               10 (need)
+            746 LOAD_GLOBAL             27 (NULL + isinstance)
+            756 LOAD_FAST                9 (item)
+            758 LOAD_GLOBAL              6 (dict)
+            768 CALL                     2
+            776 LOAD_CONST              21 ('An option must be an object')
+            778 CALL                     2
+            786 POP_TOP
+
+ 38         788 LOAD_FAST                9 (item)
+            790 LOAD_ATTR               25 (NULL|self + get)
+            810 LOAD_CONST              22 ('SubOptions')
+            812 CALL                     1
+            820 COPY                     1
+            822 POP_JUMP_IF_TRUE         2 (to 828)
+            824 POP_TOP
+            826 BUILD_LIST               0
+        >>  828 STORE_FAST              10 (children)
+
+ 39         830 LOAD_GLOBAL              9 (NULL + m)
+            840 LOAD_ATTR               10 (need)
+            860 LOAD_GLOBAL             27 (NULL + isinstance)
+            870 LOAD_FAST               10 (children)
+            872 LOAD_GLOBAL             28 (list)
+            882 CALL                     2
+            890 COPY                     1
+            892 POP_JUMP_IF_FALSE       14 (to 922)
+            894 POP_TOP
+            896 LOAD_GLOBAL             31 (NULL + len)
+            906 LOAD_FAST               10 (children)
+            908 CALL                     1
+            916 LOAD_CONST              18 (1000)
+            918 COMPARE_OP              26 (<=)
+        >>  922 LOAD_CONST              23 ('Invalid SubOptions array')
+            924 CALL                     2
+            932 POP_TOP
+
+ 40         934 BUILD_LIST               0
+            936 STORE_FAST              11 (group)
+
+ 41         938 LOAD_FAST               10 (children)
+            940 GET_ITER
+        >>  942 FOR_ITER               123 (to 1192)
+            946 STORE_FAST              12 (child)
+
+ 42         948 LOAD_GLOBAL              9 (NULL + m)
+            958 LOAD_ATTR               10 (need)
+            978 LOAD_GLOBAL             27 (NULL + isinstance)
+            988 LOAD_FAST               12 (child)
+            990 LOAD_GLOBAL              6 (dict)
+           1000 CALL                     2
+           1008 LOAD_CONST              24 ('A sub-option must be an object')
+           1010 CALL                     2
+           1018 POP_TOP
+
+ 43        1020 LOAD_FAST               11 (group)
+           1022 LOAD_ATTR               35 (NULL|self + append)
+           1042 LOAD_GLOBAL              7 (NULL + dict)
+           1052 LOAD_GLOBAL             37 (NULL + str)
+           1062 LOAD_FAST               12 (child)
+           1064 LOAD_ATTR               25 (NULL|self + get)
+           1084 LOAD_CONST              14 ('Name')
+           1086 LOAD_CONST              25 ('Variant')
+           1088 CALL                     2
+           1096 CALL                     1
+           1104 LOAD_GLOBAL             37 (NULL + str)
+           1114 LOAD_FAST               12 (child)
+           1116 LOAD_ATTR               25 (NULL|self + get)
+           1136 LOAD_CONST              26 ('Description')
+           1138 LOAD_CONST               6 ('')
+           1140 CALL                     2
+           1148 CALL                     1
+
+ 44        1156 PUSH_NULL
+           1158 LOAD_FAST                5 (includes)
+           1160 LOAD_FAST               12 (child)
+           1162 CALL                     1
+
+ 43        1170 KW_NAMES                27 (('name', 'description', 'include'))
+           1172 CALL                     3
+           1180 CALL                     1
+           1188 POP_TOP
+           1190 JUMP_BACKWARD          125 (to 942)
+
+ 41     >> 1192 END_FOR
+
+ 45        1194 LOAD_FAST                7 (total)
+           1196 LOAD_CONST              16 (1)
+           1198 LOAD_GLOBAL             31 (NULL + len)
+           1208 LOAD_FAST               11 (group)
+           1210 CALL                     1
+           1218 BINARY_OP                0 (+)
+           1222 BINARY_OP               13 (+=)
+           1226 STORE_FAST               7 (total)
+           1228 LOAD_GLOBAL              9 (NULL + m)
+           1238 LOAD_ATTR               10 (need)
+           1258 LOAD_FAST                7 (total)
+           1260 LOAD_CONST              28 (5000)
+           1262 COMPARE_OP              26 (<=)
+           1266 LOAD_CONST              29 ('Too many mod options')
+           1268 CALL                     2
+           1276 POP_TOP
+
+ 46        1278 LOAD_FAST                6 (definitions)
+           1280 LOAD_ATTR               35 (NULL|self + append)
+           1300 LOAD_GLOBAL              7 (NULL + dict)
+           1310 LOAD_GLOBAL             37 (NULL + str)
+           1320 LOAD_FAST                9 (item)
+           1322 LOAD_ATTR               25 (NULL|self + get)
+           1342 LOAD_CONST              14 ('Name')
+           1344 LOAD_CONST              30 ('Option ')
+           1346 LOAD_GLOBAL             37 (NULL + str)
+           1356 LOAD_FAST                8 (index)
+           1358 LOAD_CONST              16 (1)
+           1360 BINARY_OP                0 (+)
+           1364 CALL                     1
+           1372 BINARY_OP                0 (+)
+           1376 CALL                     2
+           1384 CALL                     1
+
+ 47        1392 LOAD_GLOBAL             37 (NULL + str)
+           1402 LOAD_FAST                9 (item)
+           1404 LOAD_ATTR               25 (NULL|self + get)
+           1424 LOAD_CONST              26 ('Description')
+           1426 LOAD_CONST               6 ('')
+           1428 CALL                     2
+           1436 CALL                     1
+           1444 PUSH_NULL
+           1446 LOAD_FAST                5 (includes)
+           1448 LOAD_FAST                9 (item)
+           1450 CALL                     1
+           1458 LOAD_FAST               11 (group)
+
+ 46        1460 KW_NAMES                31 (('name', 'description', 'include', 'choices'))
+           1462 CALL                     4
+           1470 CALL                     1
+           1478 POP_TOP
+           1480 EXTENDED_ARG             1
+           1482 JUMP_BACKWARD          391 (to 702)
+
+ 36     >> 1484 END_FOR
+
+ 48        1486 LOAD_CONST               0 (None)
+           1488 STORE_FAST              13 (icon)
+
+ 49        1490 LOAD_FAST                3 (value)
+           1492 LOAD_ATTR               25 (NULL|self + get)
+           1512 LOAD_CONST              32 ('IconPath')
+           1514 LOAD_FAST                3 (value)
+           1516 LOAD_ATTR               25 (NULL|self + get)
+           1536 LOAD_CONST              33 ('icon')
+           1538 CALL                     1
+           1546 CALL                     2
+           1554 STORE_FAST              14 (declared)
+
+ 50        1556 LOAD_GLOBAL             27 (NULL + isinstance)
+           1566 LOAD_FAST               14 (declared)
+           1568 LOAD_GLOBAL             36 (str)
+           1578 CALL                     2
+           1586 POP_JUMP_IF_FALSE      127 (to 1842)
+           1588 LOAD_FAST               14 (declared)
+           1590 POP_JUMP_IF_FALSE      125 (to 1842)
+
+ 51        1592 NOP
+
+ 52        1594 LOAD_GLOBAL              9 (NULL + m)
+           1604 LOAD_ATTR               38 (safe_path)
+           1624 LOAD_DEREF              16 (manifest)
+           1626 LOAD_ATTR               40 (parent)
+           1646 LOAD_FAST               14 (declared)
+           1648 LOAD_ATTR               43 (NULL|self + replace)
+           1668 LOAD_CONST              34 ('\\')
+           1670 LOAD_CONST              35 ('/')
+           1672 CALL                     2
+           1680 CALL                     2
+           1688 STORE_FAST              15 (image)
+
+ 53        1690 LOAD_FAST               15 (image)
+           1692 LOAD_ATTR               45 (NULL|self + is_file)
+           1712 CALL                     0
+           1720 POP_JUMP_IF_FALSE       60 (to 1842)
+           1722 LOAD_FAST               15 (image)
+           1724 LOAD_ATTR               13 (NULL|self + stat)
+           1744 CALL                     0
+           1752 LOAD_ATTR               14 (st_size)
+           1772 LOAD_CONST              36 (16777216)
+           1774 COMPARE_OP              26 (<=)
+           1778 POP_JUMP_IF_FALSE       31 (to 1842)
+
+ 54        1780 LOAD_FAST               15 (image)
+           1782 LOAD_ATTR               47 (NULL|self + relative_to)
+           1802 LOAD_DEREF               0 (files)
+           1804 CALL                     1
+           1812 LOAD_ATTR               49 (NULL|self + as_posix)
+           1832 CALL                     0
+           1840 STORE_FAST              13 (icon)
+
+ 56     >> 1842 LOAD_GLOBAL              7 (NULL + dict)
+           1852 LOAD_DEREF              16 (manifest)
+           1854 LOAD_ATTR               40 (parent)
+           1874 LOAD_ATTR               47 (NULL|self + relative_to)
+           1894 LOAD_DEREF               0 (files)
+           1896 CALL                     1
+           1904 LOAD_ATTR               49 (NULL|self + as_posix)
+           1924 CALL                     0
+
+ 57        1932 LOAD_GLOBAL             37 (NULL + str)
+           1942 LOAD_FAST                3 (value)
+           1944 LOAD_ATTR               25 (NULL|self + get)
+           1964 LOAD_CONST              26 ('Description')
+           1966 LOAD_FAST                3 (value)
+           1968 LOAD_ATTR               25 (NULL|self + get)
+           1988 LOAD_CONST              37 ('description')
+           1990 LOAD_CONST               6 ('')
+           1992 CALL                     2
+           2000 CALL                     2
+           2008 CALL                     1
+           2016 LOAD_FAST                6 (definitions)
+           2018 LOAD_FAST               13 (icon)
+
+ 56        2020 KW_NAMES                 7 (('root', 'description', 'options', 'icon'))
+           2022 CALL                     4
+           2030 RETURN_VALUE
+        >> 2032 PUSH_EXC_INFO
+
+ 55        2034 LOAD_GLOBAL              8 (m)
+           2044 LOAD_ATTR               50 (ModError)
+           2064 LOAD_GLOBAL             52 (OSError)
+           2074 BUILD_TUPLE              2
+           2076 CHECK_EXC_MATCH
+           2078 POP_JUMP_IF_FALSE        3 (to 2086)
+           2080 POP_TOP
+           2082 POP_EXCEPT
+           2084 JUMP_BACKWARD          122 (to 1842)
+        >> 2086 RERAISE                  0
+        >> 2088 COPY                     3
+           2090 POP_EXCEPT
+           2092 RERAISE                  1
+ExceptionTable:
+  1594 to 1840 -> 2032 [0]
+  2032 to 2080 -> 2088 [1] lasti
+  2086 to 2086 -> 2088 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x7f51aa72dcf0, file "mod_options.py", line 8>:
+              0 COPY_FREE_VARS           1
+
+  8           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                46 (to 106)
+             14 STORE_FAST               1 (p)
+             16 LOAD_GLOBAL              1 (NULL + len)
+             26 LOAD_FAST                1 (p)
+             28 LOAD_ATTR                3 (NULL|self + relative_to)
+             48 LOAD_DEREF               2 (files)
+             50 CALL                     1
+             58 LOAD_ATTR                4 (parts)
+             78 CALL                     1
+             86 LOAD_CONST               0 (2)
+             88 COMPARE_OP              26 (<=)
+             92 POP_JUMP_IF_TRUE         1 (to 96)
+             94 JUMP_BACKWARD           43 (to 10)
+        >>   96 LOAD_FAST                1 (p)
+             98 YIELD_VALUE              1
+            100 RESUME                   1
+            102 POP_TOP
+            104 JUMP_BACKWARD           48 (to 10)
+        >>  106 END_FOR
+            108 RETURN_CONST             1 (None)
+        >>  110 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+            112 RERAISE                  1
+ExceptionTable:
+  6 to 92 -> 110 [0] lasti
+  96 to 108 -> 110 [0] lasti
+
+Disassembly of <code object <lambda> at 0x7f51aa72e0b0, file "mod_options.py", line 9>:
+              0 COPY_FREE_VARS           1
+
+  9           2 RESUME                   0
+              4 LOAD_GLOBAL              1 (NULL + len)
+             14 LOAD_FAST                0 (p)
+             16 LOAD_ATTR                3 (NULL|self + relative_to)
+             36 LOAD_DEREF               1 (files)
+             38 CALL                     1
+             46 LOAD_ATTR                4 (parts)
+             66 CALL                     1
+             74 LOAD_GLOBAL              7 (NULL + str)
+             84 LOAD_FAST                0 (p)
+             86 CALL                     1
+             94 LOAD_ATTR                9 (NULL|self + casefold)
+            114 CALL                     0
+            122 BUILD_TUPLE              2
+            124 RETURN_VALUE
+
+Disassembly of <code object includes at 0x26ebb230, file "mod_options.py", line 22>:
+              0 COPY_FREE_VARS           1
+
+ 22           2 RESUME                   0
+
+ 23           4 LOAD_FAST                0 (item)
+              6 LOAD_ATTR                1 (NULL|self + get)
+             26 LOAD_CONST               1 ('Include')
+             28 CALL                     1
+             36 COPY                     1
+             38 POP_JUMP_IF_TRUE         2 (to 44)
+             40 POP_TOP
+             42 BUILD_LIST               0
+        >>   44 STORE_FAST               1 (paths)
+
+ 24          46 LOAD_GLOBAL              3 (NULL + m)
+             56 LOAD_ATTR                4 (need)
+             76 LOAD_GLOBAL              7 (NULL + isinstance)
+             86 LOAD_FAST                1 (paths)
+             88 LOAD_GLOBAL              8 (list)
+             98 CALL                     2
+            106 COPY                     1
+            108 POP_JUMP_IF_FALSE       18 (to 146)
+            110 POP_TOP
+            112 LOAD_GLOBAL             11 (NULL + all)
+            122 LOAD_CONST               2 (<code object <genexpr> at 0x7f51a98f8030, file "mod_options.py", line 24>)
+            124 MAKE_FUNCTION            0
+            126 LOAD_FAST                1 (paths)
+            128 GET_ITER
+            130 CALL                     0
+            138 CALL                     1
+        >>  146 LOAD_CONST               3 ('Invalid Include paths')
+            148 CALL                     2
+            156 POP_TOP
+
+ 25         158 BUILD_LIST               0
+            160 STORE_FAST               2 (out)
+
+ 26         162 LOAD_FAST                1 (paths)
+            164 GET_ITER
+        >>  166 FOR_ITER               194 (to 558)
+            170 STORE_FAST               3 (path)
+
+ 27         172 LOAD_FAST                3 (path)
+            174 LOAD_ATTR               13 (NULL|self + replace)
+            194 LOAD_CONST               4 ('\\')
+            196 LOAD_CONST               5 ('/')
+            198 CALL                     2
+            206 STORE_FAST               3 (path)
+
+ 28         208 LOAD_GLOBAL             15 (NULL + PurePosixPath)
+            218 LOAD_FAST                3 (path)
+            220 CALL                     1
+            228 STORE_FAST               4 (p)
+
+ 29         230 LOAD_GLOBAL              3 (NULL + m)
+            240 LOAD_ATTR                4 (need)
+            260 LOAD_FAST                4 (p)
+            262 LOAD_ATTR               17 (NULL|self + is_absolute)
+            282 CALL                     0
+            290 UNARY_NOT
+            292 COPY                     1
+            294 POP_JUMP_IF_FALSE       20 (to 336)
+            296 POP_TOP
+            298 LOAD_CONST               6 ('..')
+            300 LOAD_FAST                4 (p)
+            302 LOAD_ATTR               18 (parts)
+            322 CONTAINS_OP              1
+            324 COPY                     1
+            326 POP_JUMP_IF_FALSE        4 (to 336)
+            328 POP_TOP
+            330 LOAD_CONST               7 (':')
+            332 LOAD_FAST                3 (path)
+            334 CONTAINS_OP              1
+        >>  336 LOAD_CONST               8 ('Unsafe option Include path')
+            338 CALL                     2
+            346 POP_TOP
+
+ 30         348 LOAD_FAST                4 (p)
+            350 LOAD_ATTR               21 (NULL|self + as_posix)
+            370 CALL                     0
+            378 STORE_FAST               5 (normalized)
+
+ 31         380 LOAD_GLOBAL              3 (NULL + m)
+            390 LOAD_ATTR               22 (safe_path)
+            410 LOAD_DEREF               7 (manifest)
+            412 LOAD_ATTR               24 (parent)
+            432 LOAD_FAST                5 (normalized)
+            434 CALL                     2
+            442 STORE_FAST               6 (actual)
+
+ 32         444 LOAD_GLOBAL              3 (NULL + m)
+            454 LOAD_ATTR                4 (need)
+            474 LOAD_FAST                6 (actual)
+            476 LOAD_ATTR               27 (NULL|self + exists)
+            496 CALL                     0
+            504 LOAD_CONST               9 ('Option Include path is missing: ')
+            506 LOAD_FAST                3 (path)
+            508 BINARY_OP                0 (+)
+            512 CALL                     2
+            520 POP_TOP
+
+ 33         522 LOAD_FAST                2 (out)
+            524 LOAD_ATTR               29 (NULL|self + append)
+            544 LOAD_FAST                5 (normalized)
+            546 CALL                     1
+            554 POP_TOP
+            556 JUMP_BACKWARD          196 (to 166)
+
+ 26     >>  558 END_FOR
+
+ 34         560 LOAD_FAST                2 (out)
+            562 RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x7f51a98f8030, file "mod_options.py", line 24>:
+ 24           0 RETURN_GENERATOR
+              2 POP_TOP
+              4 RESUME                   0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                20 (to 52)
+             12 STORE_FAST               1 (p)
+             14 LOAD_GLOBAL              1 (NULL + isinstance)
+             24 LOAD_FAST                1 (p)
+             26 LOAD_GLOBAL              2 (str)
+             36 CALL                     2
+             44 YIELD_VALUE              1
+             46 RESUME                   1
+             48 POP_TOP
+             50 JUMP_BACKWARD           22 (to 8)
+        >>   52 END_FOR
+             54 RETURN_CONST             0 (None)
+        >>   56 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             58 RERAISE                  1
+ExceptionTable:
+  4 to 54 -> 56 [0] lasti
+
+Disassembly of <code object defaults at 0x7f51aa76d350, file "mod_options.py", line 60>:
+ 60           0 RESUME                   0
+
+ 61           2 LOAD_FAST                0 (definition)
+              4 LOAD_CONST               1 ('options')
+              6 BINARY_SUBSCR
+             10 GET_ITER
+             12 LOAD_FAST_AND_CLEAR      1 (option)
+             14 SWAP                     2
+             16 BUILD_LIST               0
+             18 SWAP                     2
+        >>   20 FOR_ITER                22 (to 68)
+             24 STORE_FAST               1 (option)
+             26 LOAD_GLOBAL              1 (NULL + dict)
+             36 LOAD_CONST               2 (True)
+             38 LOAD_FAST                1 (option)
+             40 LOAD_CONST               3 ('choices')
+             42 BINARY_SUBSCR
+             46 POP_JUMP_IF_FALSE        2 (to 52)
+             48 LOAD_CONST               4 (0)
+             50 JUMP_FORWARD             1 (to 54)
+        >>   52 LOAD_CONST               0 (None)
+        >>   54 KW_NAMES                 5 (('enabled', 'choice'))
+             56 CALL                     2
+             64 LIST_APPEND              2
+             66 JUMP_BACKWARD           24 (to 20)
+        >>   68 END_FOR
+             70 SWAP                     2
+             72 STORE_FAST               1 (option)
+             74 RETURN_VALUE
+        >>   76 SWAP                     2
+             78 POP_TOP
+             80 SWAP                     2
+             82 STORE_FAST               1 (option)
+             84 RERAISE                  0
+ExceptionTable:
+  16 to 68 -> 76 [2]
+
+Disassembly of <code object validate at 0x26e17e00, file "mod_options.py", line 64>:
+ 64           0 RESUME                   0
+
+ 65           2 LOAD_GLOBAL              1 (NULL + m)
+             12 LOAD_ATTR                2 (need)
+             32 LOAD_GLOBAL              5 (NULL + isinstance)
+             42 LOAD_FAST                1 (state)
+             44 LOAD_GLOBAL              6 (list)
+             54 CALL                     2
+             62 COPY                     1
+             64 POP_JUMP_IF_FALSE       26 (to 118)
+             66 POP_TOP
+             68 LOAD_GLOBAL              9 (NULL + len)
+             78 LOAD_FAST                1 (state)
+             80 CALL                     1
+             88 LOAD_GLOBAL              9 (NULL + len)
+             98 LOAD_FAST                0 (definition)
+            100 LOAD_CONST               1 ('options')
+            102 BINARY_SUBSCR
+            106 CALL                     1
+            114 COMPARE_OP              40 (==)
+        >>  118 LOAD_CONST               2 ('Option state does not match this mod')
+            120 CALL                     2
+            128 POP_TOP
+
+ 66         130 LOAD_GLOBAL             11 (NULL + zip)
+            140 LOAD_FAST                0 (definition)
+            142 LOAD_CONST               1 ('options')
+            144 BINARY_SUBSCR
+            148 LOAD_FAST                1 (state)
+            150 CALL                     2
+            158 GET_ITER
+        >>  160 FOR_ITER               173 (to 510)
+            164 UNPACK_SEQUENCE          2
+            168 STORE_FAST               2 (option)
+            170 STORE_FAST               3 (selection)
+
+ 67         172 LOAD_GLOBAL              1 (NULL + m)
+            182 LOAD_ATTR                2 (need)
+            202 LOAD_GLOBAL              5 (NULL + isinstance)
+            212 LOAD_FAST                3 (selection)
+            214 LOAD_GLOBAL             12 (dict)
+            224 CALL                     2
+            232 COPY                     1
+            234 POP_JUMP_IF_FALSE       32 (to 300)
+            236 POP_TOP
+            238 LOAD_GLOBAL             15 (NULL + type)
+            248 LOAD_FAST                3 (selection)
+            250 LOAD_ATTR               17 (NULL|self + get)
+            270 LOAD_CONST               3 ('enabled')
+            272 CALL                     1
+            280 CALL                     1
+            288 LOAD_GLOBAL             18 (bool)
+            298 IS_OP                    0
+        >>  300 LOAD_CONST               4 ('Invalid checkbox selection')
+            302 CALL                     2
+            310 POP_TOP
+
+ 68         312 LOAD_FAST                3 (selection)
+            314 LOAD_ATTR               17 (NULL|self + get)
+            334 LOAD_CONST               5 ('choice')
+            336 CALL                     1
+            344 STORE_FAST               4 (choice)
+
+ 69         346 LOAD_GLOBAL              1 (NULL + m)
+            356 LOAD_ATTR                2 (need)
+            376 LOAD_FAST                2 (option)
+            378 LOAD_CONST               6 ('choices')
+            380 BINARY_SUBSCR
+            384 UNARY_NOT
+            386 COPY                     1
+            388 POP_JUMP_IF_FALSE        4 (to 398)
+            390 POP_TOP
+            392 LOAD_FAST                4 (choice)
+            394 LOAD_CONST               0 (None)
+            396 IS_OP                    0
+        >>  398 COPY                     1
+            400 POP_JUMP_IF_TRUE        47 (to 496)
+            402 POP_TOP
+
+ 70         404 LOAD_GLOBAL             15 (NULL + type)
+            414 LOAD_FAST                4 (choice)
+            416 CALL                     1
+            424 LOAD_GLOBAL             20 (int)
+            434 IS_OP                    0
+            436 COPY                     1
+            438 POP_JUMP_IF_FALSE       28 (to 496)
+            440 POP_TOP
+            442 LOAD_CONST               7 (0)
+            444 LOAD_FAST                4 (choice)
+            446 SWAP                     2
+            448 COPY                     2
+            450 COMPARE_OP              26 (<=)
+            454 COPY                     1
+            456 POP_JUMP_IF_FALSE       17 (to 492)
+            458 POP_TOP
+            460 LOAD_GLOBAL              9 (NULL + len)
+            470 LOAD_FAST                2 (option)
+            472 LOAD_CONST               6 ('choices')
+            474 BINARY_SUBSCR
+            478 CALL                     1
+            486 COMPARE_OP               2 (<)
+            490 JUMP_FORWARD             2 (to 496)
+        >>  492 SWAP                     2
+            494 POP_TOP
+        >>  496 LOAD_CONST               8 ('Choose exactly one sub-option')
+
+ 69         498 CALL                     2
+            506 POP_TOP
+            508 JUMP_BACKWARD          175 (to 160)
+
+ 66     >>  510 END_FOR
+
+ 71         512 LOAD_FAST                1 (state)
+            514 RETURN_VALUE
+
+Disassembly of <code object selected_files at 0x26e18590, file "mod_options.py", line 74>:
+              0 MAKE_CELL               15 (path)
+
+ 74           2 RESUME                   0
+
+ 75           4 LOAD_GLOBAL              1 (NULL + validate)
+             14 LOAD_FAST                1 (definition)
+             16 LOAD_FAST                2 (state)
+             18 CALL                     2
+             26 POP_TOP
+
+ 76          28 LOAD_GLOBAL              3 (NULL + m)
+             38 LOAD_ATTR                4 (safe_path)
+             58 LOAD_FAST                0 (files)
+             60 LOAD_FAST                1 (definition)
+             62 LOAD_CONST               1 ('root')
+             64 BINARY_SUBSCR
+             68 COPY                     1
+             70 POP_JUMP_IF_TRUE         2 (to 76)
+             72 POP_TOP
+             74 LOAD_CONST               2 ('.')
+        >>   76 CALL                     2
+             84 STORE_FAST               3 (root)
+
+ 77          86 BUILD_LIST               0
+             88 STORE_FAST               4 (all_includes)
+             90 BUILD_LIST               0
+             92 STORE_FAST               5 (chosen)
+
+ 78          94 LOAD_GLOBAL              7 (NULL + zip)
+            104 LOAD_FAST                1 (definition)
+            106 LOAD_CONST               3 ('options')
+            108 BINARY_SUBSCR
+            112 LOAD_FAST                2 (state)
+            114 CALL                     2
+            122 GET_ITER
+        >>  124 FOR_ITER               116 (to 360)
+            128 UNPACK_SEQUENCE          2
+            132 STORE_FAST               6 (option)
+            134 STORE_FAST               7 (selection)
+
+ 79         136 LOAD_FAST                4 (all_includes)
+            138 LOAD_ATTR                9 (NULL|self + extend)
+            158 LOAD_FAST                6 (option)
+            160 LOAD_CONST               4 ('include')
+            162 BINARY_SUBSCR
+            166 CALL                     1
+            174 POP_TOP
+
+ 80         176 LOAD_FAST                6 (option)
+            178 LOAD_CONST               5 ('choices')
+            180 BINARY_SUBSCR
+            184 GET_ITER
+        >>  186 FOR_ITER                22 (to 234)
+            190 STORE_FAST               8 (choice)
+            192 LOAD_FAST                4 (all_includes)
+            194 LOAD_ATTR                9 (NULL|self + extend)
+            214 LOAD_FAST                8 (choice)
+            216 LOAD_CONST               4 ('include')
+            218 BINARY_SUBSCR
+            222 CALL                     1
+            230 POP_TOP
+            232 JUMP_BACKWARD           24 (to 186)
+        >>  234 END_FOR
+
+ 81         236 LOAD_FAST                7 (selection)
+            238 LOAD_CONST               6 ('enabled')
+            240 BINARY_SUBSCR
+            244 POP_JUMP_IF_TRUE         1 (to 248)
+            246 JUMP_BACKWARD           62 (to 124)
+
+ 82     >>  248 LOAD_FAST                5 (chosen)
+            250 LOAD_ATTR                9 (NULL|self + extend)
+            270 LOAD_FAST                6 (option)
+            272 LOAD_CONST               4 ('include')
+            274 BINARY_SUBSCR
+            278 CALL                     1
+            286 POP_TOP
+
+ 83         288 LOAD_FAST                6 (option)
+            290 LOAD_CONST               5 ('choices')
+            292 BINARY_SUBSCR
+            296 POP_JUMP_IF_TRUE         1 (to 300)
+            298 JUMP_BACKWARD           88 (to 124)
+        >>  300 LOAD_FAST                5 (chosen)
+            302 LOAD_ATTR                9 (NULL|self + extend)
+            322 LOAD_FAST                6 (option)
+            324 LOAD_CONST               5 ('choices')
+            326 BINARY_SUBSCR
+            330 LOAD_FAST                7 (selection)
+            332 LOAD_CONST               7 ('choice')
+            334 BINARY_SUBSCR
+            338 BINARY_SUBSCR
+            342 LOAD_CONST               4 ('include')
+            344 BINARY_SUBSCR
+            348 CALL                     1
+            356 POP_TOP
+            358 JUMP_BACKWARD          118 (to 124)
+
+ 78     >>  360 END_FOR
+
+ 84         362 LOAD_FAST                4 (all_includes)
+            364 GET_ITER
+            366 LOAD_FAST_AND_CLEAR      9 (p)
+            368 SWAP                     2
+            370 BUILD_LIST               0
+            372 SWAP                     2
+        >>  374 FOR_ITER                24 (to 426)
+            378 STORE_FAST               9 (p)
+            380 LOAD_GLOBAL              3 (NULL + m)
+            390 LOAD_ATTR                4 (safe_path)
+            410 LOAD_FAST                3 (root)
+            412 LOAD_FAST                9 (p)
+            414 CALL                     2
+            422 LIST_APPEND              2
+            424 JUMP_BACKWARD           26 (to 374)
+        >>  426 END_FOR
+            428 STORE_FAST              10 (exclusions)
+            430 STORE_FAST               9 (p)
+
+ 85         432 BUILD_MAP                0
+            434 STORE_FAST              11 (selected)
+
+ 87         436 LOAD_GLOBAL             11 (NULL + sorted)
+            446 LOAD_FAST                3 (root)
+            448 LOAD_ATTR               13 (NULL|self + rglob)
+            468 LOAD_CONST               8 ('*')
+            470 CALL                     1
+            478 CALL                     1
+            486 GET_ITER
+        >>  488 FOR_ITER                45 (to 582)
+            492 STORE_DEREF             15 (path)
+
+ 88         494 LOAD_DEREF              15 (path)
+            496 LOAD_ATTR               15 (NULL|self + is_file)
+            516 CALL                     0
+            524 POP_JUMP_IF_TRUE         1 (to 528)
+            526 JUMP_BACKWARD           20 (to 488)
+
+ 89     >>  528 LOAD_GLOBAL             17 (NULL + any)
+            538 LOAD_CLOSURE            15 (path)
+            540 BUILD_TUPLE              1
+            542 LOAD_CONST               9 (<code object <genexpr> at 0x7f51aa789f00, file "mod_options.py", line 89>)
+            544 MAKE_FUNCTION            8 (closure)
+            546 LOAD_FAST               10 (exclusions)
+            548 GET_ITER
+            550 CALL                     0
+            558 CALL                     1
+            566 POP_JUMP_IF_FALSE        1 (to 570)
+            568 JUMP_BACKWARD           41 (to 488)
+        >>  570 LOAD_FAST                3 (root)
+            572 LOAD_FAST               11 (selected)
+            574 LOAD_DEREF              15 (path)
+            576 STORE_SUBSCR
+            580 JUMP_BACKWARD           47 (to 488)
+
+ 87     >>  582 END_FOR
+
+ 90         584 LOAD_FAST                5 (chosen)
+            586 GET_ITER
+        >>  588 FOR_ITER               177 (to 946)
+            592 STORE_FAST              12 (relative)
+
+ 91         594 LOAD_GLOBAL              3 (NULL + m)
+            604 LOAD_ATTR                4 (safe_path)
+            624 LOAD_FAST                3 (root)
+            626 LOAD_FAST               12 (relative)
+            628 CALL                     2
+            636 STORE_FAST              13 (include)
+
+ 92         638 LOAD_FAST               13 (include)
+            640 LOAD_ATTR               15 (NULL|self + is_file)
+            660 CALL                     0
+            668 POP_JUMP_IF_FALSE        3 (to 676)
+            670 LOAD_FAST               13 (include)
+            672 BUILD_LIST               1
+            674 JUMP_FORWARD            25 (to 726)
+        >>  676 LOAD_GLOBAL             11 (NULL + sorted)
+            686 LOAD_FAST               13 (include)
+            688 LOAD_ATTR               13 (NULL|self + rglob)
+            708 LOAD_CONST               8 ('*')
+            710 CALL                     1
+            718 CALL                     1
+        >>  726 STORE_FAST              14 (paths)
+
+ 93         728 LOAD_FAST               14 (paths)
+            730 GET_ITER
+        >>  732 FOR_ITER               103 (to 942)
+            736 STORE_DEREF             15 (path)
+
+ 94         738 LOAD_DEREF              15 (path)
+            740 LOAD_ATTR               15 (NULL|self + is_file)
+            760 CALL                     0
+            768 POP_JUMP_IF_TRUE         1 (to 772)
+            770 JUMP_BACKWARD           20 (to 732)
+
+ 95     >>  772 LOAD_GLOBAL              3 (NULL + m)
+            782 LOAD_ATTR                4 (safe_path)
+            802 LOAD_FAST                3 (root)
+            804 LOAD_DEREF              15 (path)
+            806 LOAD_ATTR               19 (NULL|self + relative_to)
+            826 LOAD_FAST                3 (root)
+            828 CALL                     1
+            836 LOAD_ATTR               21 (NULL|self + as_posix)
+            856 CALL                     0
+            864 CALL                     2
+            872 POP_TOP
+
+ 96         874 LOAD_FAST               13 (include)
+            876 LOAD_ATTR               15 (NULL|self + is_file)
+            896 CALL                     0
+            904 POP_JUMP_IF_FALSE       12 (to 930)
+            906 LOAD_FAST               13 (include)
+            908 LOAD_ATTR               22 (parent)
+            928 JUMP_FORWARD             1 (to 932)
+        >>  930 LOAD_FAST               13 (include)
+        >>  932 LOAD_FAST               11 (selected)
+            934 LOAD_DEREF              15 (path)
+            936 STORE_SUBSCR
+            940 JUMP_BACKWARD          105 (to 732)
+
+ 93     >>  942 END_FOR
+            944 JUMP_BACKWARD          179 (to 588)
+
+ 90     >>  946 END_FOR
+
+ 97         948 LOAD_FAST               11 (selected)
+            950 LOAD_ATTR               25 (NULL|self + items)
+            970 CALL                     0
+            978 GET_ITER
+            980 LOAD_FAST_AND_CLEAR     15 (path)
+            982 LOAD_FAST_AND_CLEAR     16 (base)
+            984 SWAP                     3
+            986 BUILD_LIST               0
+            988 SWAP                     2
+        >>  990 FOR_ITER                 9 (to 1012)
+            994 UNPACK_SEQUENCE          2
+            998 STORE_FAST              15 (path)
+           1000 STORE_FAST              16 (base)
+           1002 LOAD_FAST               15 (path)
+           1004 LOAD_FAST               16 (base)
+           1006 BUILD_TUPLE              2
+           1008 LIST_APPEND              2
+           1010 JUMP_BACKWARD           11 (to 990)
+        >> 1012 END_FOR
+           1014 SWAP                     3
+           1016 STORE_FAST              16 (base)
+           1018 STORE_FAST              15 (path)
+           1020 RETURN_VALUE
+        >> 1022 SWAP                     2
+           1024 POP_TOP
+
+ 84        1026 SWAP                     2
+           1028 STORE_FAST               9 (p)
+           1030 RERAISE                  0
+        >> 1032 SWAP                     2
+           1034 POP_TOP
+
+ 97        1036 SWAP                     3
+           1038 STORE_FAST              16 (base)
+           1040 STORE_FAST              15 (path)
+           1042 RERAISE                  0
+ExceptionTable:
+  370 to 426 -> 1022 [2]
+  986 to 1012 -> 1032 [3]
+
+Disassembly of <code object <genexpr> at 0x7f51aa789f00, file "mod_options.py", line 89>:
+              0 COPY_FREE_VARS           1
+
+ 89           2 RETURN_GENERATOR
+              4 POP_TOP
+              6 RESUME                   0
+              8 LOAD_FAST                0 (.0)
+        >>   10 FOR_ITER                28 (to 70)
+             14 STORE_FAST               1 (item)
+             16 LOAD_DEREF               2 (path)
+             18 LOAD_FAST                1 (item)
+             20 COMPARE_OP              40 (==)
+             24 COPY                     1
+             26 POP_JUMP_IF_TRUE        17 (to 62)
+             28 POP_TOP
+             30 LOAD_DEREF               2 (path)
+             32 LOAD_ATTR                1 (NULL|self + is_relative_to)
+             52 LOAD_FAST                1 (item)
+             54 CALL                     1
+        >>   62 YIELD_VALUE              1
+             64 RESUME                   1
+             66 POP_TOP
+             68 JUMP_BACKWARD           30 (to 10)
+        >>   70 END_FOR
+             72 RETURN_CONST             0 (None)
+        >>   74 CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+             76 RERAISE                  1
+ExceptionTable:
+  6 to 72 -> 74 [0] lasti

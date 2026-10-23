@@ -1,0 +1,57 @@
+{
+  "exe_file": "Lunas-Modloader-0.5.1.exe",
+  "exe_sha256": "1f938544c8b4e4e0e7ade2bd347d7d6a67418c47bf0f4b786c4889132d9c2ae3",
+  "exe_bytes": 11891328,
+  "inspection_python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "compile_optimization": 1,
+  "app_modules": [
+    {
+      "module": "gui",
+      "source_file": "gui.py",
+      "source_sha256": "dcef2fbc82705f8e6ea00449dc25ce34b724b901cf1c0809fa3b5f36c0de9a59",
+      "embedded_marshal_sha256": "4d0034d1b7541097a688208a2f80c97105cb07e4c51069178f4b33aa94e1712d",
+      "compiled_marshal_sha256": "4d0034d1b7541097a688208a2f80c97105cb07e4c51069178f4b33aa94e1712d",
+      "exact_marshaled_code_match": true,
+      "code_object_match": true
+    },
+    {
+      "module": "luna_core",
+      "source_file": "luna_core.py",
+      "source_sha256": "9c8271f211dbfe02371d0ec647b14360ae078707d9d7ba8acc04a769d33d40fe",
+      "embedded_marshal_sha256": "6b6e587f23fcaf1c811d39fba0bfc57c14be95eddba18c9bc5f74765222e4fe8",
+      "compiled_marshal_sha256": "6b6e587f23fcaf1c811d39fba0bfc57c14be95eddba18c9bc5f74765222e4fe8",
+      "exact_marshaled_code_match": true,
+      "code_object_match": true
+    },
+    {
+      "module": "manager",
+      "source_file": "manager.py",
+      "source_sha256": "d9e3be007a199728cfb9b316022011d7aeb0da4fdebde1e557baf099c10c547a",
+      "embedded_marshal_sha256": "9e6d008886f58991eee8cb5cb2645faabdecb76e08e9ad37333ef0d2eaf0db72",
+      "compiled_marshal_sha256": "9e6d008886f58991eee8cb5cb2645faabdecb76e08e9ad37333ef0d2eaf0db72",
+      "exact_marshaled_code_match": true,
+      "code_object_match": true
+    },
+    {
+      "module": "mod_options",
+      "source_file": "mod_options.py",
+      "source_sha256": "6f9cc77e6f04930f38d697391807c285288d22b69d5027c093c292edf5db3ea7",
+      "embedded_marshal_sha256": "2e6de6784f33309d14cd77c80a5a259f6158a10945d0959660aeb48f0d6ddaf8",
+      "compiled_marshal_sha256": "2e6de6784f33309d14cd77c80a5a259f6158a10945d0959660aeb48f0d6ddaf8",
+      "exact_marshaled_code_match": true,
+      "code_object_match": true
+    },
+    {
+      "module": "mod_images",
+      "source_file": "mod_images.py",
+      "source_sha256": "b9998373cdf4901372eaed5b607491bc28bb2c45df1ab07bee73945b35ba8d0f",
+      "embedded_marshal_sha256": "b663db8a95b3fdb8486309d2ede71d171d0f53f885fe905ccdc0da87624921af",
+      "compiled_marshal_sha256": "b663db8a95b3fdb8486309d2ede71d171d0f53f885fe905ccdc0da87624921af",
+      "exact_marshaled_code_match": true,
+      "code_object_match": true
+    }
+  ],
+  "all_five_app_modules_match": true,
+  "scope": "Five original application modules; runtime/bootloader is inventoried, not audited by this comparison.",
+  "method": "Compile supplied source, compare exact marshal bytes, extract recursive bytecode disassembly. No decompilation and no EXE execution."
+}
